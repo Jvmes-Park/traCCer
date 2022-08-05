@@ -1,0 +1,42 @@
+#include "vec3.h"
+#include "color.h"
+#include "ray.h"
+
+#include <iostream>
+
+color ray_color() {
+	
+}
+
+int main() {
+	const int image_width = 256;
+	const int image_height = 256;
+	
+	/* 
+	 Pixels are written in rows: left -> right. Columns: top -> bottom
+	 RBG conventional component values range from 0 to 1
+	 Image values range from 0 to 255
+	 */
+
+	std::cout<<"P3\n" << image_width << " " << image_height << "\n255\n"<< std::endl;
+
+	for (int h = image_height - 1; h >= 0; h--) {
+		std::cerr<<"\rScanlines remaining: " << h <<' '<< std::flush;
+		for (int w = 0; w < image_width; w++) {
+			/*
+			auto R = double(w) / (image_width - 1);
+			auto G = double(h) / (image_height - 1);
+			auto B = 0.25;
+
+			int image_R = static_cast<int>(255.999 * R);
+			int image_G = static_cast<int>(255.999 * G);
+			int image_B = static_cast<int>(255.999 * B);
+
+			std::cout<< image_R << " " << image_G << " " << image_B<<std::endl;
+			*/
+			color pixel_color(double(w) / (image_width - 1), double(h) / (image_height - 1), 0.25);
+			write_color(std::cout, pixel_color);
+		}
+	}
+	std::cerr<<"\nDone.\n"<<std::endl;
+}
