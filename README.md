@@ -1,4 +1,4 @@
-#traCCer
+# traCCer
 A ray tracer implementation in C++
 
 Produced images can be found in the 'images' file.
